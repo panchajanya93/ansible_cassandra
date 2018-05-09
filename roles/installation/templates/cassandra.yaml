@@ -886,7 +886,6 @@ cross_node_timeout: false
 
 # endpoint_snitch -- Set this to a class that implements
 
-endpoint_snitch: GossipingPropertyFileSnitch
 
 # IEndpointSnitch.  The snitch has two functions:
 #
@@ -950,7 +949,7 @@ endpoint_snitch: GossipingPropertyFileSnitch
 #
 # You can use a custom Snitch by setting this to the full class name
 # of the snitch, which will be assumed to be on your classpath.
-endpoint_snitch: SimpleSnitch
+endpoint_snitch: GossipingPropertyFileSnitch
 
 # controls how often to perform the more expensive part of host score
 # calculation
