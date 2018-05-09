@@ -1,0 +1,8 @@
+---
+ - hosts: webservers
+   become: yes
+   vars:
+     cluster_name: Test_Cluster
+     seeds: 18.191.41.103
+   roles:
+     - installation

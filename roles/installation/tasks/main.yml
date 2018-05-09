@@ -1,0 +1,33 @@
+---
+ - name: copy JAVA RPM file
+   copy:
+     src: jdk-8u171-linux-x64.rpm
+     dest: /tmp/jdk-8u171-linux-x64.rpm
+
+ - name: install JDK file with yum
+   yum:
+     name: /tmp/jdk-8u171-linux-x64.rpm
+     state: present
+
+ - name: copy cassandra repo
+   copy:
+     src: cassandra.repo
+     dest: /etc/yum.repos.d/cassandra.repo
+     owner: root
+     group: root
+     mode: 0644
+
+ - name: install cassandra packages
+   yum: name=cassandra state=installed
+   become: true
+
+ - name: Using template file to copy to destination
+   template:
+     src=cassandra.yaml dest=/etc/cassandra/conf/cassandra.yaml
+
+ - name: we have to start the cassandra
+   service: name=cassandra state=restarted
+   
+   
+
+   
